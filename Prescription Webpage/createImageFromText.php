@@ -7,7 +7,7 @@ class phpTextToImage
     public $imageArray = [];
     public $imageNumber = 0;
 
-    public function measureWidth($text, $fontSize = 14, $font = 'geoAi.ttf', $angle = 0, $imgWidth = 600)
+    public function measureWidth($text, $fontSize = 14, $font = 'geoAi.ttf', $angle = 0, $imgWidth = 730)
     {
         $listOfImageText = [];
         $index = 0;
@@ -86,7 +86,7 @@ class phpTextToImage
         $num = $lines;
         $angle = 0;
         $heading = "PRESCRIPTION";
-        imagettftext($this->imageArray[0], 14, 90, 100, 300, $textColor, $font, $heading);
+        imagettftext($this->imageArray[0], 16, 90, 100, 300, $textColor, $font, $heading);
         $pr = 1;
         $x = 250;
         $y = 50;
@@ -106,7 +106,7 @@ class phpTextToImage
                     if ($num >= 1 && $x == 900) {
                         $this->imageNumber++;
                         $this->imageArray[$this->imageNumber] = imagecreatetruecolor($imgWidth, $imgHeight);
-                        imagettftext($this->imageArray[$this->imageNumber], 14, 90, 30, 210, $textColor, $font, $heading);
+                        imagettftext($this->imageArray[$this->imageNumber], 16, 90, 30, 210, $textColor, $font, $heading);
                         $x = 250;
                         $y = 50;
                         $count = 0;

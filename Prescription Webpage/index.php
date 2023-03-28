@@ -228,6 +228,17 @@ if (empty($_SESSION["resultantArray"])) {
             animation-duration: 0.4s;
         }
 
+
+        .postForm {
+            /* visibility: hidden; */
+            display: none;
+        }
+
+        .getForm {
+            display: none;
+        }
+
+
         @keyframes fade {
             from {
                 opacity: .4
@@ -316,78 +327,162 @@ if (empty($_SESSION["resultantArray"])) {
             <button onclick="clears()">Clear</button>
         </header>
     </nav>
-    <div class="parameters">
-        <form method="POST" action="createImageFromText.php" id="prsfrm">
 
-            <br><br>
-            <table class="firsthalf">
-                <tr>
-                    <td>Patient Name</td>
-                    <td><input type="text" name="patientname" id="patientname"></td>
-                </tr>
-                <tr>
-                    <td>Medication</td>
-                    <td><input type="text" name="medication" id="medication"></td>
-                </tr>
-                <tr>
-                    <td>Instructions</td>
-                    <td><input type="text" name="instructions" id="instructions"></td>
-                </tr>
-                <tr>
-                    <td>Quantity</td>
-                    <td><input type="text" name="quantity" id="quantity"></td>
-                </tr>
-                <tr>
-                    <td>Fill Date</td>
-                    <td><input type="date" name="filldate" id="filldate"></td>
-                </tr>
-                <tr>
-                    <td>Expiration Date</td>
-                    <td><input type="date" name="expirationdate" id="expirationdate"></td>
-                </tr>
-                <tr>
-                    <td>Refills Remaining &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                    <td><input type="text" name="refillsRemaining" id="refillsRemaining"></td>
-                </tr>
-            </table>
-            <table class="secondhalf">
-                <tr>
-                    <td>Refillable until date</td>
-                    <td><input type="date" name="rud" id="rud"></td>
-                </tr>
-                <tr>
-                    <td>Prescription number</td>
-                    <td><input type="text" name="prsnum" id="prsnum"></td>
-                </tr>
-                <tr>
-                    <td>Warning 1</td>
-                    <td><input type="text" name="wrng1" id="wrng1"></td>
-                </tr>
-                <tr>
-                    <td>Warning 2</td>
-                    <td><input type="text" name="wrng2" id="wrng2"></td>
-                </tr>
-                <tr>
-                    <td>Warning 3</td>
-                    <td><input type="text" name="wrng3" id="wrng3"></td>
-                </tr>
-                <tr>
-                    <td>Warning 4</td>
-                    <td><input type="text" name="wrng4" id="wrng4"></td>
-                </tr>
-                <tr>
-                    <td>Warning 5</td>
-                    <td><input type="text" name="wrng5" id="wrng5"></td>
-                </tr>
-            </table>
-            <table class="generate">
-                <tr>
-                    <td><input type="submit" value="Generate Image"></td>
-                    <td></td>
-                </tr>
-            </table>
-        </form>
-        <br><br><br> <br>
+    <div class="methodChoose" style="margin-left: 46%;margin-top:5%;">
+        <label for="mthd">METHOD</label>
+        <select name="mthd" id="mthd" onchange="chooseMeth()">
+            <option value="">--Choose method--</option>
+            <option value="GET">GET</option>
+            <option value="POST">POST</option>
+        </select>
+    </div>
+
+    <div class="parameters">
+
+        <div class="getForm" id="getForm">
+            <form method="GET" action="createImageFromTextGet.php" id="prsfrm">
+                <br><br>
+                <table class="firsthalf">
+                    <tr>
+                        <td>Patient Name</td>
+                        <td><input type="text" name="patientname" id="patientname"></td>
+                    </tr>
+                    <tr>
+                        <td>Medication</td>
+                        <td><input type="text" name="medication" id="medication"></td>
+                    </tr>
+                    <tr>
+                        <td>Instructions</td>
+                        <td><input type="text" name="instructions" id="instructions"></td>
+                    </tr>
+                    <tr>
+                        <td>Quantity</td>
+                        <td><input type="text" name="quantity" id="quantity"></td>
+                    </tr>
+                    <tr>
+                        <td>Fill Date</td>
+                        <td><input type="date" name="filldate" id="filldate"></td>
+                    </tr>
+                    <tr>
+                        <td>Expiration Date</td>
+                        <td><input type="date" name="expirationdate" id="expirationdate"></td>
+                    </tr>
+                    <tr>
+                        <td>Refills Remaining &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                        <td><input type="text" name="refillsRemaining" id="refillsRemaining"></td>
+                    </tr>
+                </table>
+                <table class="secondhalf">
+                    <tr>
+                        <td>Refillable until date</td>
+                        <td><input type="date" name="rud" id="rud"></td>
+                    </tr>
+                    <tr>
+                        <td>Prescription number</td>
+                        <td><input type="text" name="prsnum" id="prsnum"></td>
+                    </tr>
+                    <tr>
+                        <td>Warning 1</td>
+                        <td><input type="text" name="wrng1" id="wrng1"></td>
+                    </tr>
+                    <tr>
+                        <td>Warning 2</td>
+                        <td><input type="text" name="wrng2" id="wrng2"></td>
+                    </tr>
+                    <tr>
+                        <td>Warning 3</td>
+                        <td><input type="text" name="wrng3" id="wrng3"></td>
+                    </tr>
+                    <tr>
+                        <td>Warning 4</td>
+                        <td><input type="text" name="wrng4" id="wrng4"></td>
+                    </tr>
+                    <tr>
+                        <td>Warning 5</td>
+                        <td><input type="text" name="wrng5" id="wrng5"></td>
+                    </tr>
+                </table>
+                <table class="generate">
+                    <tr>
+                        <td><input type="submit" value="Generate Image"></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </form>
+            <br><br><br> <br>
+        </div>
+        <div class="postForm" id="postForm">
+            <form method="POST" action="createImageFromText.php" id="prsfrm">
+                <br><br>
+                <table class="firsthalf">
+                    <tr>
+                        <td>Patient Name</td>
+                        <td><input type="text" name="patientname" id="patientname"></td>
+                    </tr>
+                    <tr>
+                        <td>Medication</td>
+                        <td><input type="text" name="medication" id="medication"></td>
+                    </tr>
+                    <tr>
+                        <td>Instructions</td>
+                        <td><input type="text" name="instructions" id="instructions"></td>
+                    </tr>
+                    <tr>
+                        <td>Quantity</td>
+                        <td><input type="text" name="quantity" id="quantity"></td>
+                    </tr>
+                    <tr>
+                        <td>Fill Date</td>
+                        <td><input type="date" name="filldate" id="filldate"></td>
+                    </tr>
+                    <tr>
+                        <td>Expiration Date</td>
+                        <td><input type="date" name="expirationdate" id="expirationdate"></td>
+                    </tr>
+                    <tr>
+                        <td>Refills Remaining &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                        <td><input type="text" name="refillsRemaining" id="refillsRemaining"></td>
+                    </tr>
+                </table>
+                <table class="secondhalf">
+                    <tr>
+                        <td>Refillable until date</td>
+                        <td><input type="date" name="rud" id="rud"></td>
+                    </tr>
+                    <tr>
+                        <td>Prescription number</td>
+                        <td><input type="text" name="prsnum" id="prsnum"></td>
+                    </tr>
+                    <tr>
+                        <td>Warning 1</td>
+                        <td><input type="text" name="wrng1" id="wrng1"></td>
+                    </tr>
+                    <tr>
+                        <td>Warning 2</td>
+                        <td><input type="text" name="wrng2" id="wrng2"></td>
+                    </tr>
+                    <tr>
+                        <td>Warning 3</td>
+                        <td><input type="text" name="wrng3" id="wrng3"></td>
+                    </tr>
+                    <tr>
+                        <td>Warning 4</td>
+                        <td><input type="text" name="wrng4" id="wrng4"></td>
+                    </tr>
+                    <tr>
+                        <td>Warning 5</td>
+                        <td><input type="text" name="wrng5" id="wrng5"></td>
+                    </tr>
+                </table>
+                <table class="generate">
+                    <tr>
+                        <td><input type="submit" value="Generate Image"></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </form>
+            <br><br><br> <br>
+        </div>
     </div>
     <div class="slideshow-container">
 
@@ -422,12 +517,12 @@ if (empty($_SESSION["resultantArray"])) {
                     <td>
                         <label for=\"fontSize\">Font Size:</label>
                         <select name=\"fontSize\" id=\"fontSize\" onchange = \"fontSize()\">
-                            <option value=\"12\">12</option>
-                            <option value=\"14\">14</option>
-                            <option value=\"16\">16</option>
-                            <option value=\"18\">18</option>
-                            <option value=\"20\">20</option>
-                            <option value=\"22\">22</option>
+                            <option value=\"14\">12</option>
+                            <option value=\"16\">14</option>
+                            <option value=\"18\">16</option>
+                            <option value=\"20\">18</option>
+                            <option value=\"22\">20</option>
+                            <option value=\"24\">22</option>
                         </select>
                     </td>
                 </tr>
@@ -500,18 +595,25 @@ if (empty($_SESSION["resultantArray"])) {
         const select = document.getElementById('fontSize').value;
         window.location = "formatImage.php?var=0,0," + select;
     }
+
+    function chooseMeth() {
+
+        var meth = document.getElementById("mthd").value;
+        console.log(meth);
+        if (meth === "GET") {
+            // document.getElementById("getForm").style.visibility = "visible";
+            // document.getElementById("postForm").style.visibility = "hidden";
+            document.getElementById("getForm").style.display = "flex";
+            document.getElementById("postForm").style.display = "none";
+        }
+        if (meth === "POST") {
+            // document.getElementById("postForm").style.visibility = "visible";
+            // document.getElementById("getForm").style.visibility = "hidden";
+            document.getElementById("postForm").style.display = "flex";
+            document.getElementById("getForm").style.display = "none";
+        }
+
+    }
 </script>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
