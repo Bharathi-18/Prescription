@@ -1,19 +1,15 @@
 [
     {
         "Name": "Patient Name",
-        "Input": "John Daidstick"
-    },
-    {
-        "Name": "Medication",
-        "Input": "Take i tablet per day"
+        "Input": "bharathi"
     },
     {
         "Name": "font",
         "Input": "geoAi.ttf"
     },
     {
-        "Name": "fontsize",
-        "Input": 18
+        "Name": "fontSize",
+        "Input": "22"
     },
     {
         "Name": "textColor",

@@ -117,6 +117,16 @@ class phpTextToImage
                 }
             }
         }
+
+        if ($x == 250) {
+
+            $x = 900;
+            $y = 50;
+            $var = $imageObject->measureWidth("This page has no content", $fontSize, $font);
+            $var = str_replace("\\n", "", $var);
+            imagettftext($this->imageArray[$this->imageNumber], $fontSize, $angle, $x, $y, $textColor, $font, $var);
+        }
+
         if ($count == 0) {
             $this->imageNumber--;
         }

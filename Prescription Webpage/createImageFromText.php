@@ -86,7 +86,7 @@ class phpTextToImage
         $num = $lines;
         $angle = 0;
         $heading = "PRESCRIPTION";
-        imagettftext($this->imageArray[0], 16, 90, 100, 300, $textColor, $font, $heading);
+        imagettftext($this->imageArray[0], 16, 90, 120, 300, $textColor, $font, $heading);
         $pr = 1;
         $x = 250;
         $y = 50;
@@ -117,6 +117,16 @@ class phpTextToImage
                 }
             }
         }
+
+        if ($x == 250) {
+
+            $x = 900;
+            $y = 50;
+            $var = $imageObject->measureWidth("This page has no content", $fontSize, $font);
+            $var = str_replace("\\n", "", $var);
+            imagettftext($this->imageArray[$this->imageNumber], $fontSize, $angle, $x, $y, $textColor, $font, $var);
+        }
+
         if ($count == 0) {
             $this->imageNumber--;
         }

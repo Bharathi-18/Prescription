@@ -51,14 +51,14 @@ class phpTextToImage
         $font = 'font/' . $font;
         $this->imageArray[0] = imagecreatetruecolor($imgWidth, $imgHeight);
         if ($backgroundColor == '#000000') {
-            $backgroundColor = $this->hexToRGB("#fffdfa");
-        } else {
             $backgroundColor = $this->hexToRGB("#000000");
+        } else {
+            $backgroundColor = $this->hexToRGB("#fffdfa");
         }
         if ($textColor == '#fffdfa') {
-            $textColor = $this->hexToRGB("#000000");
-        } else {
             $textColor = $this->hexToRGB("#fffdfa");
+        } else {
+            $textColor = $this->hexToRGB("#000000");
         }
         $textColor = imagecolorallocate($this->imageArray[0], $textColor['r'], $textColor['g'], $textColor['b']);
         $backgroundColor = imagecolorallocate($this->imageArray[0], $backgroundColor['r'], $backgroundColor['g'], $backgroundColor['b']);
@@ -86,7 +86,7 @@ class phpTextToImage
         $num = $lines;
         $angle = 0;
         $heading = "PRESCRIPTION";
-        imagettftext($this->imageArray[0], 16, 90, 100, 300, $textColor, $font, $heading);
+        imagettftext($this->imageArray[0], 16, 90, 30, 210, $textColor, $font, $heading);
         $pr = 1;
         $x = 250;
         $y = 50;
@@ -117,6 +117,16 @@ class phpTextToImage
                 }
             }
         }
+
+        if ($x == 250) {
+            $x = 900;
+            $y = 50;
+            $var = $imageObject->measureWidth("This page has no content", $fontSize, $font);
+            $var = str_replace("\\n", "", $var);
+            imagettftext($this->imageArray[$this->imageNumber], $fontSize, $angle, $x, $y, $textColor, $font, $var);
+        }
+
+
         if ($count == 0) {
             $this->imageNumber--;
         }
@@ -198,39 +208,26 @@ $var = explode(",", $_GET['var']);
 
 echo "<br> $var[0]  $var[1] $var[2] <br>";
 
+$arrFiles = scandir("image/");
+
+foreach ($arrFiles as $af) {
+    if (str_contains($af, ".png")) {
+        unlink("image/" . $af);
+    }
+}
 if ($var[0] == 1) {
 
     $temp = $textColor;
     $textColor = $backgroundColor;
     $backgroundColor = $temp;
-
-    $arrFiles = scandir("image/");
-
-    foreach ($arrFiles as $af) {
-        if (str_contains($af, ".png")) {
-            unlink("image/" . $af);
-        }
-    }
 } else if ($var[1] != 0) {
 
     $font = $var[1];
     echo "<br> font - $font<br>";
-    $arrFiles = scandir("image/");
-    foreach ($arrFiles as $af) {
-        if (str_contains($af, ".png")) {
-            unlink("image/" . $af);
-        }
-    }
 } else if ($var[2] != 0) {
 
     $fontSize = $var[2];
     echo "<br> fontSize - $fontSize<br>";
-    $arrFiles = scandir("image/");
-    foreach ($arrFiles as $af) {
-        if (str_contains($af, ".png")) {
-            unlink("image/" . $af);
-        }
-    }
 }
 
 echo "<br>$font $fontSize $textColor $backgroundColor $count";

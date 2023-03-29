@@ -99,19 +99,3 @@ foreach ($printerImageFiles as $pf) {
 $img->generateZPLCode();
 
 // header("location:index.php");
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

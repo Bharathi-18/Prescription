@@ -338,7 +338,6 @@ if (empty($_SESSION["resultantArray"])) {
     </div>
 
     <div class="parameters">
-
         <div class="getForm" id="getForm">
             <form method="GET" action="createImageFromTextGet.php" id="prsfrm">
                 <br><br>
@@ -503,6 +502,7 @@ if (empty($_SESSION["resultantArray"])) {
                     <td>
                         <label for=\"font\">Font:</label>
                         <select name=\"font\" id=\"font\" onchange = \"fontStyle()\">
+                            <option value=\"\">-- Choose Font --</option>
                             <option value=\"geoAi.ttf\">GeoAI</option>
                             <option value=\"timesnewroman.ttf\">Times New Roman</option>
                             <option value=\"GothamBold.ttf\">Gotham Bold</option>
@@ -517,6 +517,7 @@ if (empty($_SESSION["resultantArray"])) {
                     <td>
                         <label for=\"fontSize\">Font Size:</label>
                         <select name=\"fontSize\" id=\"fontSize\" onchange = \"fontSize()\">
+                            <option value=\"\">-- Choose Font Size --</option>
                             <option value=\"14\">12</option>
                             <option value=\"16\">14</option>
                             <option value=\"18\">16</option>
