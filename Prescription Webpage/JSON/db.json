@@ -1,7 +1,59 @@
 [
     {
         "Name": "Patient Name",
-        "Input": "bharathi"
+        "Input": "John Daidstick"
+    },
+    {
+        "Name": "Medication",
+        "Input": "Take i tablet per day"
+    },
+    {
+        "Name": "Instructions",
+        "Input": "Take twice in a day"
+    },
+    {
+        "Name": "Quantity",
+        "Input": "18"
+    },
+    {
+        "Name": "Fill date",
+        "Input": "2023-03-10"
+    },
+    {
+        "Name": "Expiration date",
+        "Input": "2023-03-24"
+    },
+    {
+        "Name": "Refills Remaining",
+        "Input": "5"
+    },
+    {
+        "Name": "Refillable until date",
+        "Input": "2023-03-18"
+    },
+    {
+        "Name": "Prescription Number",
+        "Input": "1 2 3 4 5 6"
+    },
+    {
+        "Name": "Warning 1",
+        "Input": "No Warning"
+    },
+    {
+        "Name": "Warning 2",
+        "Input": "asd"
+    },
+    {
+        "Name": "Warning 3",
+        "Input": "Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis aute iure"
+    },
+    {
+        "Name": "Warning 4",
+        "Input": "asfd"
+    },
+    {
+        "Name": "warning 5",
+        "Input": "asf"
     },
     {
         "Name": "font",

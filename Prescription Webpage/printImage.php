@@ -28,6 +28,35 @@ class phpTextToImage
         }
     }
 
+    function downloadZplCode()
+    {
+        $files = scandir("ZPLFiles/");
+
+        date_default_timezone_set("Asia/Calcutta");
+        $d = date('d-m-Y h-i-s a');
+
+        $zipname = "bharathi" . ".zip";
+
+        $zip = new ZipArchive;
+        $zip->open($zipname, ZipArchive::CREATE);
+        $flag = 0;
+        foreach ($files as $file) {
+            if (str_contains($file, ".zpl")) {
+                echo $file . "<br>";
+                $zip->addFile("ZPLFiles/" . $file);
+                $flag = 1;
+            }
+        }
+        $zip->close();
+
+        if ($flag == 1) {
+            header('Content-Type: application/octet-stream');
+            header('Content-disposition: attachment; filename=' . $zipname);
+            header('Content-Length: ' . filesize($zipname));
+            readfile($zipname);
+        }
+    }
+
     function generateZPLCode()
     {
 
@@ -50,37 +79,16 @@ class phpTextToImage
                 $generatedImageArray[$index++] = $af;
             }
         }
-
+        $output = "";
         foreach ($generatedImageArray as $gia) {
             $command = 'java -cp ImageToZPL.class ImageToZPL.java ' . $gia;
-            $output = exec($command);
-            $gia = str_replace(".png", "", $gia);
-            $gia .= ".zpl";
-            $this->writeInFile($gia, $output);
+            $output = $output . "\n" . exec($command);
+            // $gia = str_replace(".png", "", $gia);
+
         }
-
-        $files = scandir("ZPLFiles/");
-
-        date_default_timezone_set("Asia/Calcutta");
-        $d = date('d-m-Y h-i-s a');
-
-        $zipname = "" . $d . ".zip";
-
-        $zip = new ZipArchive;
-        $zip->open($zipname, ZipArchive::CREATE);
-
-        foreach ($files as $file) {
-            if (str_contains($file, ".zpl")) {
-                // echo $file . "<br>";
-                $zip->addFile($file);
-            }
-        }
-        $zip->close();
-
-        header('Content-Type: application/zip');
-        header('Content-disposition: attachment; filename=' . $zipname);
-        header('Content-Length: ' . filesize($zipname));
-        readfile($zipname);
+        $gia = "prescription.zpl";
+        $this->writeInFile($gia, $output);
+        $this->downloadZplCode();
     }
 }
 
