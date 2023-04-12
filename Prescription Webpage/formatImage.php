@@ -64,9 +64,9 @@ class phpTextToImage
         $backgroundColor = imagecolorallocate($this->imageArray[0], $backgroundColor['r'], $backgroundColor['g'], $backgroundColor['b']);
         imagefilledrectangle($this->imageArray[0], 0, 0, $imgWidth - 1, $imgHeight - 1, $backgroundColor);
         //break lines
-        $temporaryText = ""; // $text -> $temporaryText
-        $updatedText = ""; // $text1 -> $updatedText
-        $imageObject = new phpTextToImage(); // $imgg -> $imageObject
+        $temporaryText = "";
+        $updatedText = "";
+        $imageObject = new phpTextToImage();
         for ($i = 0; $i < $num; $i++) {
             $temptext = $infoTextArray[$i]["Name"];
             $temptext .= "  :  ";
@@ -174,13 +174,11 @@ foreach ($imageFiles as $if) {
     }
 }
 
-$infoTextArray = []; // $array -> $infoTextArray
+$infoTextArray = [];
 
 $path = 'JSON/db.json';
 $jsonString = file_get_contents($path);
 $jsondata = json_decode($jsonString, true);
-// var_dump($jsonData);
-// $size = sizeof($array);
 
 $count = 0;
 foreach ($jsondata as $jd) {
@@ -193,20 +191,13 @@ foreach ($jsondata as $jd) {
     $count++;
 }
 
-// $fontSize = 18;
-// $font = 'geoAi.ttf';
-
 $font = $jsondata[$count]["Input"];
 $fontSize = $jsondata[$count + 1]["Input"];
 
 $textColor = $jsondata[$count + 2]["Input"];
 $backgroundColor = $jsondata[$count + 3]["Input"];
 
-echo "$font $fontSize $textColor $backgroundColor";
-
 $var = explode(",", $_GET['var']);
-
-echo "<br> $var[0]  $var[1] $var[2] <br>";
 
 $arrFiles = scandir("image/");
 
@@ -256,8 +247,6 @@ $count++;
 $infoTextArray[$count]["Name"] = "backgroundColor";
 $infoTextArray[$count]["Input"] = $backgroundColor;
 
-// $count++;
-
 $jsonString = json_encode($infoTextArray, JSON_PRETTY_PRINT);
 
 $fp = fopen('JSON/db.json', 'w');
@@ -270,11 +259,9 @@ $_SESSION["resultantArray"] = [];
 $index = 0;
 
 foreach ($arrFiles as $af) {
-    if (str_contains($af, ".png")) {
+    if (strpos($af, ".png") !== false) {
         $_SESSION["resultantArray"][$index++] = $af;
     }
 }
-
-// $img->generateZPLCode();
 
 header("location:index.php");

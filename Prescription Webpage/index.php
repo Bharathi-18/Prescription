@@ -3,7 +3,7 @@ session_start();
 if (empty($_SESSION["resultantArray"])) {
     $generatedImageFilesArray = scandir("image/");
     foreach ($generatedImageFilesArray as $gifa) {
-        if (str_contains($gifa, ".png")) {
+        if (strpos($gifa, ".png") !== false) {
             unlink("image/" . $gifa);
         }
     }
@@ -203,7 +203,7 @@ if (empty($_SESSION["resultantArray"])) {
             font-size: 18px;
             padding: 8px 12px;
             position: absolute;
-            top: 0;
+            top: 70px;
         }
 
         .dot {
@@ -238,6 +238,11 @@ if (empty($_SESSION["resultantArray"])) {
             display: none;
         }
 
+        .format td {
+            padding-left: 30px;
+            font-size: 18px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
 
         @keyframes fade {
             from {
@@ -488,15 +493,6 @@ if (empty($_SESSION["resultantArray"])) {
         <?php
         if (!empty($_SESSION['resultantArray'])) {
 
-            $numberOfGeneratedImages = 0;
-
-            foreach ($_SESSION["resultantArray"] as $generatedImage) {
-                $numberOfGeneratedImages++;
-            }
-
-
-            echo "<br><br><br><button onclick=\"invert()\" id=\"invertBtn\">Invert</button>";
-
             echo "<table class=\"format\">
                 <tr>
                     <td>
@@ -512,8 +508,6 @@ if (empty($_SESSION["resultantArray"])) {
                             <option value=\"Verdana.ttf\">Verdana</option>
                         </select>
                     </td>
-                </tr>
-                <tr> 
                     <td>
                         <label for=\"fontSize\">Font Size:</label>
                         <select name=\"fontSize\" id=\"fontSize\" onchange = \"fontSize()\">
@@ -526,8 +520,16 @@ if (empty($_SESSION["resultantArray"])) {
                             <option value=\"24\">22</option>
                         </select>
                     </td>
-                </tr>
-            </table>";
+                    <td>
+                        <button onclick=\"invert()\" id=\"invertBtn\">Invert</button>
+                    </td>
+            </table><br><br><br><br>";
+
+            $numberOfGeneratedImages = 0;
+
+            foreach ($_SESSION["resultantArray"] as $generatedImage) {
+                $numberOfGeneratedImages++;
+            }
 
             $indexOfImage = 1;
             foreach ($_SESSION["resultantArray"] as $generatedImage) {
@@ -602,14 +604,10 @@ if (empty($_SESSION["resultantArray"])) {
         var meth = document.getElementById("mthd").value;
         console.log(meth);
         if (meth === "GET") {
-            // document.getElementById("getForm").style.visibility = "visible";
-            // document.getElementById("postForm").style.visibility = "hidden";
             document.getElementById("getForm").style.display = "flex";
             document.getElementById("postForm").style.display = "none";
         }
         if (meth === "POST") {
-            // document.getElementById("postForm").style.visibility = "visible";
-            // document.getElementById("getForm").style.visibility = "hidden";
             document.getElementById("postForm").style.display = "flex";
             document.getElementById("getForm").style.display = "none";
         }

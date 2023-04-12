@@ -18,7 +18,7 @@ class phpTextToImage
 
         $arrFiles1 = scandir("image/");
         foreach ($arrFiles1 as $af1) {
-            if (str_contains($af1, ".png")) {
+            if (strpos($af1, ".png") !== false) {
                 $filename = "image/" . $af1;
                 $filename1 = "printerImage/" . $af1;
                 $image = imagecreatefrompng($filename);
@@ -35,25 +35,25 @@ class phpTextToImage
         date_default_timezone_set("Asia/Calcutta");
         $d = date('d-m-Y h-i-s a');
 
-        $zipname = "bharathi" . ".zip";
+        $fileName = "prescription " . $d . ".zpl";
 
-        $zip = new ZipArchive;
-        $zip->open($zipname, ZipArchive::CREATE);
         $flag = 0;
+
         foreach ($files as $file) {
-            if (str_contains($file, ".zpl")) {
-                echo $file . "<br>";
-                $zip->addFile("ZPLFiles/" . $file);
+            if (strpos($file, ".zpl") !== false) {
                 $flag = 1;
             }
         }
-        $zip->close();
 
         if ($flag == 1) {
-            header('Content-Type: application/octet-stream');
-            header('Content-disposition: attachment; filename=' . $zipname);
-            header('Content-Length: ' . filesize($zipname));
-            readfile($zipname);
+
+            header("Cache-Control: public");
+            header("Content-Description: FIle Transfer");
+            header("Content-Disposition: attachment; filename=$fileName");
+            header("Content-Type: application/zip");
+            header("Content-Transfer-Emcoding: binary");
+
+            readfile("ZPLFiles/prescription.zpl");
         }
     }
 
@@ -61,9 +61,8 @@ class phpTextToImage
     {
 
         $zplFiles = scandir("ZPLFiles/");
-
         foreach ($zplFiles as $zf) {
-            if (str_contains($zf, ".zpl")) {
+            if (strpos($zf, ".zpl") !== false) {
                 unlink("ZPLFiles/" . $zf);
             }
         }
@@ -75,7 +74,7 @@ class phpTextToImage
         $index = 0;
 
         foreach ($imageFiles as $af) {
-            if (str_contains($af, ".png")) {
+            if (strpos($af, ".png") !== false) {
                 $generatedImageArray[$index++] = $af;
             }
         }
@@ -83,8 +82,6 @@ class phpTextToImage
         foreach ($generatedImageArray as $gia) {
             $command = 'java -cp ImageToZPL.class ImageToZPL.java ' . $gia;
             $output = $output . "\n" . exec($command);
-            // $gia = str_replace(".png", "", $gia);
-
         }
         $gia = "prescription.zpl";
         $this->writeInFile($gia, $output);
@@ -99,7 +96,7 @@ $count = 0;
 $printerImageFiles = scandir("printerImage/");
 
 foreach ($printerImageFiles as $pf) {
-    if (str_contains($pf, ".png")) {
+    if (strpos($pf, ".png") !== false) {
         unlink("printerImage/" . $pf);
     }
 }

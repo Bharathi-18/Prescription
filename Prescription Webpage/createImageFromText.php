@@ -51,22 +51,22 @@ class phpTextToImage
         $font = 'font/' . $font;
         $this->imageArray[0] = imagecreatetruecolor($imgWidth, $imgHeight);
         if ($backgroundColor == '') {
-            $backgroundColor = $this->hexToRGB("#000000");
+            $backgroundColor = $this->hexToRGB("#fffdfa");
         } else {
             $backgroundColor = $this->hexToRGB($backgroundColor);
         }
         if ($textColor == '') {
-            $textColor = $this->hexToRGB("#fffdfa");
+            $textColor = $this->hexToRGB("#000000");
         } else {
-            $textColor = $this->hexToRGB("#fffdfa");
+            $textColor = $this->hexToRGB("#000000");
         }
         $textColor = imagecolorallocate($this->imageArray[0], $textColor['r'], $textColor['g'], $textColor['b']);
         $backgroundColor = imagecolorallocate($this->imageArray[0], $backgroundColor['r'], $backgroundColor['g'], $backgroundColor['b']);
         imagefilledrectangle($this->imageArray[0], 0, 0, $imgWidth - 1, $imgHeight - 1, $backgroundColor);
         //break lines
-        $temporaryText = ""; // $text -> $temporaryText
-        $updatedText = ""; // $text1 -> $updatedText
-        $imageObject = new phpTextToImage(); // $imgg -> $imageObject
+        $temporaryText = "";
+        $updatedText = "";
+        $imageObject = new phpTextToImage();
         for ($i = 0; $i < $num; $i++) {
             $temptext = $infoTextArray[$i]["Name"];
             $temptext .= "  :  ";
@@ -169,7 +169,7 @@ $count = 0;
 $imageFiles = scandir("image/");
 
 foreach ($imageFiles as $if) {
-    if (str_contains($if, ".png")) {
+    if (strpos($if, ".png") !== false) {
         unlink("image/" . $if);
     }
 }
@@ -296,25 +296,20 @@ $count++;
 $infoTextArray[$count]["Name"] = "backgroundColor";
 $infoTextArray[$count]["Input"] = $backgroundColor;
 
-// $count++;
-
 $jsonString = json_encode($infoTextArray, JSON_PRETTY_PRINT);
 
 $fp = fopen('JSON/db.json', 'w');
 fwrite($fp, $jsonString);
 fclose($fp);
 
-
 $arrFiles = scandir("image/");
 $_SESSION["resultantArray"] = [];
 $index = 0;
 
 foreach ($arrFiles as $af) {
-    if (str_contains($af, ".png")) {
+    if (strpos($af, ".png") !== false) {
         $_SESSION["resultantArray"][$index++] = $af;
     }
 }
-
-// $img->generateZPLCode();
 
 header("location:index.php");
