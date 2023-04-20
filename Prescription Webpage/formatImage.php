@@ -169,7 +169,7 @@ $count = 0;
 $imageFiles = scandir("image/");
 
 foreach ($imageFiles as $if) {
-    if (str_contains($if, ".png")) {
+    if (strpos($if, ".png")) {
         unlink("image/" . $if);
     }
 }
@@ -202,7 +202,7 @@ $var = explode(",", $_GET['var']);
 $arrFiles = scandir("image/");
 
 foreach ($arrFiles as $af) {
-    if (str_contains($af, ".png")) {
+    if (strpos($af, ".png")) {
         unlink("image/" . $af);
     }
 }
