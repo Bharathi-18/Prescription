@@ -35,7 +35,7 @@ class phpTextToImage
         date_default_timezone_set("Asia/Calcutta");
         $d = date('d-m-Y h-i-s a');
 
-        $fileName = "prescription " . $d . ".zpl";
+        $fileName = "prescription" . $d . ".zpl";
 
         $flag = 0;
 
@@ -46,13 +46,11 @@ class phpTextToImage
         }
 
         if ($flag == 1) {
-
             header("Cache-Control: public");
             header("Content-Description: FIle Transfer");
             header("Content-Disposition: attachment; filename=$fileName");
             header("Content-Type: application/zip");
             header("Content-Transfer-Emcoding: binary");
-
             readfile("ZPLFiles/prescription.zpl");
         }
     }

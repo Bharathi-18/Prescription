@@ -228,7 +228,6 @@ if (empty($_SESSION["resultantArray"])) {
             animation-duration: 0.4s;
         }
 
-
         .postForm {
             /* visibility: hidden; */
             display: none;
@@ -256,9 +255,20 @@ if (empty($_SESSION["resultantArray"])) {
 
 
         .print {
-            margin-left: 45%;
+            display: flex;
+            flex-direction: row;
+            margin-left: 35%;
             /* margin-top: -20%; */
             padding-bottom: 100px;
+        }
+
+        .print form {
+            padding-left: 50px;
+
+        }
+
+        .displayzpl {
+            visibility: hidden;
         }
 
         @media only screen and (max-width: 300px) {
@@ -540,11 +550,13 @@ if (empty($_SESSION["resultantArray"])) {
 
             $indexOfImage = 1;
 
-            echo "<div class=\"print\"><form action=\"printImage.php\"><input type=\"submit\" value=\"Download ZPL\"><form></div>";
+            echo "<div class=\"print\"><input type=\"submit\" value=\"Generate ZPL\" onclick=\"displayzpl()\"><form action=\"printImage.php\"><input type=\"submit\" value=\"Download ZPL\"><form></div>";
         }
         ?>
     </div>
-
+    <div class="displayzpl" id="displayzpl">
+        <iframe src="displayZPL.php" width="98%" height="610px"></iframe>
+    </div>
 </body>
 
 <script>
@@ -612,6 +624,18 @@ if (empty($_SESSION["resultantArray"])) {
             document.getElementById("getForm").style.display = "none";
         }
 
+    }
+
+
+    function disp() {
+        document.getElementById("displayzpl").style.visibility = "visible";
+    }
+
+    function displayzpl() {
+
+        // window.location.href = "displayZPL.php";
+
+        disp();
     }
 </script>
 
