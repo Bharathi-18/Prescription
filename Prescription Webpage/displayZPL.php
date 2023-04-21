@@ -67,13 +67,18 @@ class phpTextToImage
                 $generatedImageArray[$index++] = $af;
             }
         }
-        $output = "";
+        $result = "";
         foreach ($generatedImageArray as $gia) {
-            $command = 'java -cp ImageToZPL.class ImageToZPL.java ' . $gia;
-            $output = $output . "\n" . exec($command);
+            exec('java -jar ImageToZPL.jar ' . $gia . ' 2>&1', $output);
+            if ($output === false) {
+                echo "Command failed to execute.";
+            } else {
+                $result1 = implode("", $output);
+                $result = $result . "\n" . $result1;
+            }
         }
         $gia = "prescription.zpl";
-        $this->writeInFile($gia, $output);
+        $this->writeInFile($gia, $result);
     }
 }
 
@@ -106,7 +111,7 @@ $img->generateZPLCode();
 </head>
 
 <body>
-    <embed src="ZPLFiles/prescription.zpl" width="100%" height="1000px"/>
+    <embed src="ZPLFiles/prescription.zpl" width="100%" height="1000px" />
 </body>
 
 </html>

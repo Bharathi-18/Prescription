@@ -284,8 +284,8 @@ $infoTextArray[$count]["Input"] = $fontSize;
 
 $count++;
 
-$textColor = "#fffdfa";
-$backgroundColor = "#000000";
+$textColor = "#000000";
+$backgroundColor = "#fffdfa";
 
 
 $infoTextArray[$count]["Name"] = "textColor";

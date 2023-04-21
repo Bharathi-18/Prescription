@@ -339,7 +339,6 @@ if (empty($_SESSION["resultantArray"])) {
     <nav>
         <header>
             <h1> Prescription</h1>
-            <button onclick="clears()">Clear</button>
         </header>
     </nav>
 
