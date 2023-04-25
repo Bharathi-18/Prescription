@@ -9,11 +9,11 @@
     },
     {
         "Name": "font",
-        "Input": "GothamBold.ttf"
+        "Input": "HelveticaBlack.ttf"
     },
     {
         "Name": "fontSize",
-        "Input": "20"
+        "Input": 18
     },
     {
         "Name": "textColor",

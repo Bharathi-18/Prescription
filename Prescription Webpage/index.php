@@ -625,7 +625,6 @@ if (empty($_SESSION["resultantArray"])) {
 
     }
 
-
     function disp() {
         document.getElementById("displayzpl").style.visibility = "visible";
     }

@@ -35,7 +35,7 @@ class phpTextToImage
         date_default_timezone_set("Asia/Calcutta");
         $d = date('d-m-Y h-i-s a');
 
-        $fileName = "prescription" . $d . ".zpl";
+        $fileName = "prescription " . $d . ".zpl";
 
         $flag = 0;
 
