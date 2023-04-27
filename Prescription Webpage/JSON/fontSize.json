@@ -1,0 +1,32 @@
+{
+    "5": {
+        "dispfontSize": "12",
+        "fontSize": "16",
+        "selected": "0"
+    },
+    "6": {
+        "dispfontSize": "14",
+        "fontSize": "18",
+        "selected": "0"
+    },
+    "7": {
+        "dispfontSize": "16",
+        "fontSize": "20",
+        "selected": "0"
+    },
+    "8": {
+        "dispfontSize": "18",
+        "fontSize": "22",
+        "selected": "0"
+    },
+    "9": {
+        "dispfontSize": "20",
+        "fontSize": "24",
+        "selected": "0"
+    },
+    "10": {
+        "dispfontSize": "22",
+        "fontSize": "26",
+        "selected": "0"
+    }
+}

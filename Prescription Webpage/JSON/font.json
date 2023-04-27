@@ -1,0 +1,27 @@
+{
+    "": {
+        "fontName": "Gotham Bold",
+        "font": "Gotham Bold.ttf",
+        "selected": "0"
+    },
+    "1": {
+        "fontName": "Helvetica Black",
+        "font": "Helvetica Black.ttf",
+        "selected": "0"
+    },
+    "2": {
+        "fontName": "Helvetica Bold",
+        "font": "Helvetica Bold.ttf",
+        "selected": "0"
+    },
+    "3": {
+        "fontName": "Tahoma",
+        "font": "Tahoma.ttf",
+        "selected": "0"
+    },
+    "4": {
+        "fontName": "Verdana",
+        "font": "Verdana.ttf",
+        "selected": "1"
+    }
+}

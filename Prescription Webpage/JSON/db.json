@@ -8,12 +8,20 @@
         "Input": "Take i tablet per day"
     },
     {
+        "Name": "Instructions",
+        "Input": "Take twice in a day"
+    },
+    {
+        "Name": "Quantity",
+        "Input": "18"
+    },
+    {
         "Name": "font",
-        "Input": "HelveticaBlack.ttf"
+        "Input": "Verdana.ttf"
     },
     {
         "Name": "fontSize",
-        "Input": 18
+        "Input": 16
     },
     {
         "Name": "textColor",

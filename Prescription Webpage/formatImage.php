@@ -264,4 +264,52 @@ foreach ($arrFiles as $af) {
     }
 }
 
-header("location:index.php");
+
+$fontNameArray = [];
+$fontIndex = 0;
+$fontArray = scandir("font/");
+foreach ($fontArray as $fA) {
+    if (strpos($fA, ".ttf") !== false) {
+        if ($fA === $font) {
+            $fontNameArray[$fontSizeIndex]["fontName"] = str_replace(".ttf", "", $fA);
+            $fontNameArray[$fontSizeIndex]["font"] = $fA;
+            $fontNameArray[$fontSizeIndex]["selected"] = "1";
+        } else {
+            $fontNameArray[$fontSizeIndex]["fontName"] = str_replace(".ttf", "", $fA);
+            $fontNameArray[$fontSizeIndex]["font"] = $fA;
+            $fontNameArray[$fontSizeIndex]["selected"] = "0";
+        }
+        $fontSizeIndex++;
+    }
+}
+
+$jsonString = json_encode($fontNameArray, JSON_PRETTY_PRINT);
+
+$fontJSON = fopen("JSON/font.json", 'w');
+fwrite($fontJSON, $jsonString);
+fclose($fontJSON);
+
+$fontSizeArray = [];
+$fontIndex = 0;
+for ($i = 12; $i <= 22;) {
+    if (($i + 4) . "" === $fontSize) {
+        $fontSizeArray[$fontSizeIndex]["dispfontSize"] = "" . $i;
+        $fontSizeArray[$fontSizeIndex]["fontSize"] = "" . ($i + 4);
+        $fontSizeArray[$fontSizeIndex]["selected"] = "1";
+    } else {
+        $fontSizeArray[$fontSizeIndex]["dispfontSize"] = "" . $i;
+        $fontSizeArray[$fontSizeIndex]["fontSize"] = "" . ($i + 4);
+        $fontSizeArray[$fontSizeIndex]["selected"] = "0";
+    }
+    $fontSizeIndex++;
+    $i += 2;
+}
+
+$jsonString = json_encode($fontSizeArray, JSON_PRETTY_PRINT);
+
+$fontJSON = fopen("JSON/fontSize.json", 'w');
+fwrite($fontJSON, $jsonString);
+fclose($fontJSON);
+
+
+header("location:displayImage.php");

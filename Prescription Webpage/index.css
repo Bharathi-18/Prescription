@@ -1,0 +1,308 @@
+       * {
+           margin: 0;
+       }
+
+       body {
+           background-color: rgb(161, 226, 120);
+       }
+
+       nav {
+           background-color: rgb(31, 30, 30);
+       }
+
+       header {
+           margin-left: 44%;
+           font-family: 'Roboto Slab';
+           padding-top: 30px;
+           padding-bottom: 18px;
+           color: rgb(184, 226, 185);
+           font-size: 22px;
+       }
+
+       header button {
+           margin-left: 70%;
+           font-size: 18px;
+           border-radius: 8px;
+           border-style: none;
+           background-color: black;
+           color: aliceblue;
+           width: 80px;
+           height: 32px;
+       }
+
+       header button:hover {
+           background-color: aliceblue;
+           color: black;
+       }
+
+       .parameters {
+           display: flex;
+           position: relative;
+           font-family: 'Sofia Sans Condensed';
+           font-size: 20px;
+           margin-left: 26%;
+           margin-top: 5%;
+       }
+
+       .parameters .secondhalf {
+           margin-top: -62%;
+           margin-left: 130%;
+           width: 100%;
+       }
+
+       .parameters .generate {
+           margin-top: 10%;
+           margin-left: 85%;
+       }
+
+       input[type="submit"] {
+           border-radius: 25px;
+           height: 30px;
+           width: 180px;
+           border-style: none;
+           background-color: black;
+           color: white;
+       }
+
+       .btn {
+           width: 150px;
+           height: 30px;
+           margin-top: 25%;
+           display: block;
+       }
+
+       .imgclass {
+           width: fit-content;
+           height: fit-content;
+           margin-top: 32%;
+           margin-left: -35%;
+       }
+
+       #imgCls {
+           margin-top: 38%;
+           padding-bottom: 20%;
+           margin-left: -25%;
+       }
+
+       .imgCr {
+           margin-top: 36%;
+           margin-left: -45%;
+           display: block;
+           padding: 100px;
+       }
+
+       .rstBtn {
+           display: none;
+       }
+
+       .container {
+           margin-top: 60%;
+       }
+
+       .mySlides {
+           display: none
+       }
+
+       img {
+           vertical-align: middle;
+       }
+
+       /* Slideshow container */
+       .slideshow-container {
+           margin-top: 60%;
+           margin-left: 8%;
+           max-width: 1400px;
+           max-height: fit-content;
+           position: relative;
+           margin: auto;
+           padding-top: 20px;
+       }
+
+       /* Next & previous buttons */
+
+       .prev {
+           cursor: pointer;
+           position: absolute;
+           top: 50%;
+           width: fit-content;
+           padding: 5px;
+           margin-top: 18px;
+           margin-left: -3%;
+           color: black;
+           font-weight: bold;
+           font-size: 28px;
+           transition: 0s ease;
+           border-radius: 0 3px 3px 0;
+           user-select: none;
+       }
+
+       .next {
+           cursor: pointer;
+           position: absolute;
+           top: 50%;
+           width: fit-content;
+           padding: 5px;
+           margin-top: 18px;
+           margin-right: -3.2%;
+           color: black;
+           font-weight: bold;
+           font-size: 28px;
+           transition: 0s ease;
+           border-radius: 0 3px 3px 0;
+           user-select: none;
+       }
+
+
+       .next {
+           right: 0;
+           border-radius: 3px 0 0 3px;
+       }
+
+       .prev:hover,
+       .next:hover {
+           background-color: rgba(0, 0, 0, 0.8);
+           color: white;
+       }
+
+       .text {
+           color: #f2f2f2;
+           font-size: 15px;
+           padding: 8px 12px;
+           position: absolute;
+           bottom: 8px;
+           width: 100%;
+           text-align: center;
+       }
+
+       .numbertext {
+           color: black;
+           font-size: 18px;
+           padding: 8px 12px;
+           position: absolute;
+           top: 70px;
+       }
+
+       .dot {
+           cursor: pointer;
+           height: 15px;
+           width: 15px;
+           margin: 0 2px;
+           background-color: #bbb;
+           border-radius: 50%;
+           display: inline-block;
+           transition: background-color 0.6s ease;
+       }
+
+       .active,
+       .dot:hover {
+           background-color: #717171;
+       }
+
+       /* Fading animation */
+       .fade {
+           animation-name: fade;
+           animation-duration: 0.4s;
+       }
+
+       .postForm {
+           /* visibility: hidden; */
+           display: none;
+       }
+
+       .getForm {
+           display: none;
+       }
+
+       .format td {
+           padding-left: 30px;
+           font-size: 18px;
+           font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+       }
+
+       @keyframes fade {
+           from {
+               opacity: .4
+           }
+
+           to {
+               opacity: 1
+           }
+       }
+
+
+       .print {
+           display: flex;
+           flex-direction: row;
+           margin-left: 35%;
+           /* margin-top: -20%; */
+           padding-bottom: 100px;
+       }
+
+       .print form {
+           padding-left: 50px;
+
+       }
+
+       .displayzpl {
+           visibility: hidden;
+       }
+
+       @media only screen and (max-width: 300px) {
+
+           .prev,
+           .next,
+           .text {
+               font-size: 11px
+           }
+       }
+
+       @media only screen and (max-width: 1022px) {
+           .parameters .secondhalf {
+               margin-top: 2%;
+               margin-left: 0%;
+           }
+
+           .parameters .generate {
+               margin-left: 20%;
+           }
+       }
+
+       @media only screen and (max-width: 518px) {
+           nav header {
+               margin-left: 15%;
+           }
+
+           .parameters {
+               margin-left: 10%;
+           }
+       }
+
+       @media only screen and (max-width: 473px) {
+           nav header {
+               margin-left: 20%;
+           }
+
+           .parameters {
+               margin-left: 10%;
+           }
+       }
+
+       @media only screen and (max-width: 385px) {
+           nav header {
+               margin-left: 15%;
+           }
+
+           .parameters {
+               margin-left: 10%;
+           }
+       }
+
+       @media only screen and (max-width: 357px) {
+           nav header {
+               margin-left: 11%;
+           }
+
+           .parameters {
+               margin-left: 4%;
+           }
+       }
